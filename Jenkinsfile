@@ -20,15 +20,5 @@ pipeline {
                 sh 'docker build -t vulnerable-java-application:0.1 .'
             }
         }
-        stage('Run Docker Image') {
-            agent {
-                label 'build-in'
-            }
-            steps {
-                sh 'docker rm --force vulnerable-java-application'
-                sh 'docker run --name vulnerable-java-application -p 9000:9000 -d vulnerable-java-application:0.1'
-            }
-        }
-            
     }
 }
